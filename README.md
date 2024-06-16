@@ -118,10 +118,6 @@ Task 2
 
 Contributions are welcome! If you find any issues or have suggestions for improvements, please submit an issue or create a pull request.
 
-## License
-
-This project is licensed under the MIT License. See the LICENSE file for details.
-
 ## Acknowledgements
 
 - This project uses `JOptionPane` for GUI interactions.
