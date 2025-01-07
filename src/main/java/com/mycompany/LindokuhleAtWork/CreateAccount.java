@@ -91,9 +91,11 @@ public class CreateAccount {
      */
     public String returnLoginStatus(String username, String password) {
         if (loginUser(username, password)) {
-            return "Successful to Login! Welcome " + name + " " + surname + ", it is great to see you again.";
+            return "Successful to Login! \nWelcome " + name + " " + surname + ", it is great to see you again.";
         } else {
-            return "Failed to Login";
+            JOptionPane.showMessageDialog(null, "Failed to Login", "Login Error", JOptionPane.ERROR_MESSAGE);
+        System.exit(0); // Terminate the application
+        return null; // This line will not be reached
         }
     }
 }
