@@ -1,6 +1,7 @@
 package com.mycompany.LindokuhleAtWork;
 
 import javax.swing.JOptionPane;
+import javax.swing.*;
 
 /**
  *
@@ -65,7 +66,7 @@ public class CreateAccount {
         // Validate password complexity
         while (!checkPasswordComplexity()) {
             JOptionPane.showMessageDialog(null, "Invalid Password! Password is not correctly formatted,\nPlease ensure that the password contains at least \n8 characters, a capital letter, a number and a special character.", "Registration Error", JOptionPane.ERROR_MESSAGE);
-            this.password = JOptionPane.showInputDialog(null, "Enter a password", "Registration", JOptionPane.QUESTION_MESSAGE);
+            this.password = CreateAccount.promptPasswordInput("Enter a password", "Registration");
             if (this.password == null) {
                 return "Registration cancelled.";
             }
@@ -96,6 +97,32 @@ public class CreateAccount {
             JOptionPane.showMessageDialog(null, "Failed to Login", "Login Error", JOptionPane.ERROR_MESSAGE);
         System.exit(0); // Terminate the application
         return null; // This line will not be reached
+        }
+    }
+    /**
+     * Displays a password input dialog using JPasswordField.
+     *
+     * @param message The message to display in the dialog.
+     * @param title   The title of the dialog window.
+     * @return The entered password as a string or null if the user cancels.
+     */
+    public static String promptPasswordInput(String message, String title) {
+        // Create a password field for secure input
+        JPasswordField passwordField = new JPasswordField();
+        Object[] messageContent = {message, passwordField};
+
+        int option = JOptionPane.showConfirmDialog(
+                null, 
+                messageContent, 
+                title, 
+                JOptionPane.OK_CANCEL_OPTION, 
+                JOptionPane.QUESTION_MESSAGE
+        );
+
+        if (option == JOptionPane.OK_OPTION) {
+            return new String(passwordField.getPassword());
+        } else {
+            return null; // User canceled
         }
     }
 }

@@ -33,22 +33,22 @@ public class KanbanBoards {
         // Register a new user
         String newName = promptInput("Enter your first name", "Registration");
         if (newName == null) {
-            return;
+            System.exit(0);
         }
 
         String newSurname = promptInput("Enter your last name", "Registration");
         if (newSurname == null) {
-            return;
+            System.exit(0);
         }
 
         String newUsername = promptInput("Enter a username", "Registration");
         if (newUsername == null) {
-            return;
+            System.exit(0);
         }
 
-        String newPassword = promptInput("Enter a password", "Registration");
+        String newPassword = CreateAccount.promptPasswordInput("Enter a password", "Registration");
         if (newPassword == null) {
-            return;
+            System.exit(0);
         }
 
         // Register the user and display the result
@@ -61,12 +61,12 @@ public class KanbanBoards {
         // Login
         String inputUsername = promptInput("Enter your username", "Login");
         if (inputUsername == null) {
-            return;
+            System.exit(0);
         }
 
-        String inputPassword = promptInput("Enter your password", "Login");
+        String inputPassword = CreateAccount.promptPasswordInput("Enter your password", "Login");
         if (inputPassword == null) {
-            return;
+            System.exit(0);
         }
 
         // Check login status and display the result
@@ -230,6 +230,10 @@ public class KanbanBoards {
 
     // Displays a report of all tasks, including details such as name, developer, ID, duration, and status.
     private static void displayAllTasks() {
+        if (taskNames.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "No tasks available.", "All Task", JOptionPane.INFORMATION_MESSAGE);
+            return;
+        }
         StringBuilder report = new StringBuilder();
         for (int i = 0; i < taskNames.size(); i++) {
             report.append("Task Name: ").append(taskNames.get(i)).append("\n")
@@ -243,6 +247,11 @@ public class KanbanBoards {
 
     // Displays a report of tasks marked as "Done", including details such as name, developer, ID, duration, and status.
     private static void displayDoneTasks() {
+        if (taskNames.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "No tasks available.", "Done Task", JOptionPane.INFORMATION_MESSAGE);
+            return;
+        }
+        
         StringBuilder report = new StringBuilder();
         for (int i = 0; i < taskNames.size(); i++) {
             if (taskStatuses.get(i).equalsIgnoreCase("Done")) {
