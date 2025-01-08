@@ -93,7 +93,7 @@ JUnit test class to validate the functionality of the `Tasks` class and related 
 When prompted for registration, enter the following details:
 - First Name: `John`
 - Last Name: `Doe`
-- Username: `john_doe`
+- Username: `john_`
 - Password: `Password123!`
 
 For task management:
